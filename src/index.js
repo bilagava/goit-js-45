@@ -168,6 +168,18 @@ console.log ( 'Модуль 1.2' ) ;
 
 // console.log(link);
 
+// Example 6 - Форматирование ссылки (includes и логическое «И»)
+// Напиши скрипт который проверяет заканчивается ли значение переменной link символом /. Если нет, добавь в конец значения link этот символ, но только в том случае, если в link есть подстрока "my-site". Используй конструкцию if...else.
+
+// let link = 'https://somesite.com/about';
+
+// if (link[link.length - 1] !== '/' && link.includes('my-site') ) {
+//     link = link + '/';
+// }
+// console.log(link);
+
+
+
 // ===================== arguments ======
 // function max() {
 //   const numbers = Array.from(arguments);
@@ -207,160 +219,318 @@ console.log ( 'Модуль 1.2' ) ;
 
 // console.log(findLongestWord('jdfghds iuy sdfsfdafafasfa rtr'));
 
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// const clients = ["Mango", "Ajax", "Poly"];
+// ==== ?? ====
+// console.log(1 || 2); // 1
+// console.log(1 ?? 2); // 1
 
-// for (let i = 0; i < clients.length; i += 1) {
-//   console.log(clients[i]);
+// console.log(undefined || 2); // 2
+// console.log(null || 2); // 2
+// console.log(undefined ?? 4); // 4
+// console.log(null ?? 4); // 4
+
+// console.log(0 || 3); // 3
+// console.log(0 ?? 3); // 0
+
+// ==== slice бегущяя строка ====
+// const text =
+//   'Метод slice() возвращает новый массив, содержащий копию части исходного массива ';
+
+// const title = document.querySelector('h3');
+
+// for (let i = 0; i < text.length; i += 1) {
+//   const str = text.slice(i);
+//     // console.log(str);
+//   setTimeout(() => {
+//     title.textContent = str;
+//   }, i * 100);
 // }
 
-// const clients = ["Mango", "Ajax", "Poly"];
+// ==== includes ====
+// const logins = ['admin', 'vasya', 'qwerty'];
+// const userInput = prompt('enter login');
 
+// if (logins.includes(userInput)) {
+//   console.log('welcome!');
+// } else {
+//   console.log('try again');
+// }
+// // ----------------------------
+// console.log('admin vasya qwerty'.includes('admin'));
+// console.log('admin vasya qwerty'.includes('kjhgj'));
 
-// for (const client of clients) {
-//   console.log(client);
+// === Number, String ====
+// Напиши скрипт который переведёт значение totalMinutes (количество минут)
+// в строку в формате часов и минут HH:MM.
+
+// Скажите пожалуйста, как читается это выражение
+// const doubleDigitHours = String(hours).padStart(2, 0);  именно  String()
+
+// 70 покажет 01:10
+// 450 покажет 07:30
+// 1441 покажет 24:01
+
+// const totalMinutes = 70;
+
+// const hours = Math.floor(totalMinutes / 60);
+// const minutes = totalMinutes % 60;
+// console.log(hours);
+// console.log(minutes);
+
+// const doubleDigitHours = String(hours).padStart(2, 0);
+// const doubleDigitMinutes = String(minutes).padStart(2, 0);
+// console.log(`${doubleDigitHours}:${doubleDigitMinutes}`);
+
+// console.log(Number('1234'));
+// console.log(String(1234).padStart(8, '*'));
+
+// ==== Array.from ====
+// let obj = { 0: 1, 1: 2, 2: 3 };
+
+// console.log([1, 2, 3]);
+// console.log(obj);
+
+// console.log(Array.from(obj));
+// console.log(Object.values(obj));
+
+// ==== debugging ====
+// const logins = ['admin', 'vasya', 'qwerty'];
+// const userInput = prompt('enter login');
+
+// if (logins.includes(userInput.toLowerCase())) {
+//   console.log('welcome!');
+// } else {
+//   console.log('try again');
 // }
 
-// const string = "javascript";
+// =======
+// Example 7 - Форматирование ссылки (тернарный оператор)
+// Выполни рефакторинг кода задачи номер 4 используя тернарный оператор.
 
+// let link = 'https://my-site.com/about';
+// // if (link.includes('my-site') && !link.endsWith('/')) {
+// //   link += '/';
+// // }
 
-// for (const character of string) {
-//   console.log(character);
+// link += link.includes('my-site') && !link.endsWith('/') ? '/' : '';
+// console.log(link);
+
+// ======
+// Example 8 - if...else и логические операторы
+// Напиши скрипт который будет выводить в консоль браузера строку в зависимости от значения переменной hours.
+
+// Если значение переменной hours:
+
+// меньше 17, выводи строку "Pending"
+// больше либо равно 17 и меньше либо равно 24, выводи строку "Expires"
+// больше 24 , выводи строку "Overdue"
+
+// const hours = 17;
+
+// if (hours < 17) {
+//     message = 'Pending';
 // }
-
-// const clients = ["Mango", "Poly", "Ajax", "Polpy",  "Yuriy"];
-// const clientNameToFind = "Vasia";
-// let message;
-
-// for (const client of clients) {
-//     if (client === clientNameToFind) {
-       
-//         message = `Клиент с именем ${clientNameToFind} есть в базе!`;
-//         break;
+// else if (hours >= 17 && hours <= 24) {
+//     message = 'Expires';
+// }
+// else {
+//     message = 'Overdue';
 //     }
-//     message=`Клиента с именем ${clientNameToFind} в базе нет.`
+        
+// console.log(message);
 
+// // const hours = 200;
+
+// if (hours < 17) {
+
+//   console.log('Pending');
+// } else if (hours >= 17 && hours <= 24) {
+//   console.log('Expires');
+// } else {
+//   console.log('Overdue');
 // }
-// console.log(message)
 
-// const numbers = [1, 3, 14, 18, 4, 7, 29, 6, 34];
-// const threshold = 15;
+// =====
+// Example 9 - Дедлайн сдачи проекта (if...else)
+// Напиши скрипт для отображения времени дедлайна сдачи проекта. Используй конструкцию if...else.
 
-// // Для чисел меньше чем порог срабатывает continue, выполнение тела прекращается
-// // и управление передаётся на следующую итерацию.
-// for (let i = 0; i < numbers.length; i += 1) {
-//   if (numbers[i] < threshold) {
-//     continue;
+// Eсли до дедлайна 0 дней - выведи строку "Сегодня"
+// Eсли до дедлайна 1 день - выведи строку "Завтра"
+// Eсли до дедлайна 2 дня - выведи строку "Послезавтра"
+// Eсли до дедлайна 3+ дней - выведи строку "Дата в будущем"
+
+
+// const daysUntilDeadline = 2;
+
+// if (daysUntilDeadline === 0) {
+//     message = 'Сегодня';
+// }
+// else if (daysUntilDeadline === 1) {
+//     message = 'Завтра';
+// }
+// else if (daysUntilDeadline === 2) {
+//     message = 'Послезавтра';
+// }
+// else  {
+//     message = 'Дата в будущем';
+// }
+// console.log(message);
+// const daysUntilDeadline = 0;
+// // Пиши код ниже этой строки
+
+// if (daysUntilDeadline === 0) {
+//   console.log('Сегодня ночью спать не придётся');
+// } else if (daysUntilDeadline === 1) {
+//   console.log('Завтра');
+// } else if (daysUntilDeadline === 2) {
+//   console.log('Послезавтра');
+// } else {
+//   console.log('Дата в будущем');
+// }
+
+// ====
+// Example 10 - Дедлайн сдачи проекта (switch)
+// Выполни рефакторинг кода задачи номер 5 используя switch.
+
+// const daysUntilDeadline = 3;
+
+// switch (daysUntilDeadline) {
+//     case 0:
+//     message = 'Сегодня';
+//     break;
+    
+//     case 1:
+//     message = 'Завтра';
+//     break;
+
+//     case 2:
+//     message = 'Послезавтра';
+//     break;
+    
+//     default:
+//     message = 'Дата в будущем';
+// }
+// console.log(message);
+
+// const daysUntilDeadline = 0;
+
+// switch (daysUntilDeadline) {
+//   case 0:
+//     console.log('Сегодня ночью спать не придётся');
+//     break;
+//   case 1:
+//     console.log('Завтра');
+//     break;
+//   case 2:
+//     console.log('Послезавтра');
+//     break;
+//   default:
+//     console.log('Дата в будущем');
+// }
+
+// ======
+// Example 11 - Цикл for
+// Напиши цикл for который выводит в консоль браузера числа по возрастанию от min до max,
+// но только если число кратное 5.
+
+// const min = 20;
+// const max = 100;
+
+// for (let i = min; i <= max; i += 1){
+//     if (i % 5 === 0) {
+//         console.log(i);
+//     }
+// }
+
+// const min = 20;
+// const max = 100;
+
+// for (let i = min; i <= max; i += 1) {
+//   if (i % 5 === 0) {
+//     console.log(i);
 //   }
-
-//   console.log(`Число больше чем ${threshold}: ${numbers[i]}`); // 18, 29, 34
 // }
 
-// let a = 5;
-// // Присвоение по значению, в памяти будет создана еще
-// // одна ячейка в которую будет скопировано значение 5
-// let b = a;
-// console.log(a); // 5
-// console.log(b); // 5
+// =====
+// Example 12 - Ввод пользователя и ветвления
+// Напиши скрипт, который будет спрашивать логин с помощью prompt и логировать результат в консоль браузера.
 
-// // Изменим значение a
-// a = 10;
-// console.log(a); // 10
-// // Значение b не изменилось так как это отдельная копия
-// console.log(b); // 5
+// Если посетитель вводит "Админ", то prompt запрашивает пароль
+// Если ничего не введено или нажата клавиша Esc - вывести строку "Отменено"
+// В противном случае вывести строку "Я вас не знаю"
+// Пароль проверять так:
 
-// const a = ["Mango"];
-// // Так как a это массив, в b записывается ссылка на уже существующий
-// // массив в памяти. Теперь a и b указывают на один и тот же массив.
-// const b = a;
-// console.log(a); // ["Mango"]
-// console.log(b); // ["Mango"]
+// Если введён пароль "Я админ", то вывести строку "Здравствуйте!"
+// Иначе выводить строку "Неверный пароль"
 
-// // Изменим массив, добавив еще один элемент, используя указатель из a
-// a.push("Poly");
-// console.log(a); // ["Mango", "Poly"]
 
-// // b также изменилось, потому что b, как и a,
-// // просто содержит ссылку на одно и то же место в памяти
-// console.log(b); // ["Mango", "Poly"]
+// const login = prompt('enter login');
 
-// // Результат повторяется
-// b.push("Ajax");
-// console.log(a); // ["Mango", "Poly", "Ajax"]
-// console.log(b); // ["Mango", "Poly", "Ajax"]
-
-// const name = "Mango";
-// const nywname = name.split('');
-// console.log(nywname); // ["M", "a", "n", "g", "o"]
-// console.log(nywname.join('  '));
-// // const message = "JavaScript это интересно";
-// // console.log(message.split(" ")); // ["JavaScript", "это", "интересно"]
-
-// const clients = ["Mango", "Ajax", "Poly", "Kiwi"];
-// console.log(clients.indexOf("Poly")); // 2
-// console.log(clients.indexOf("Monkong")); // -1
-
-// Выносим варианты в массив
-const redFruits = ["apple", "strawberry", "cherry", "cranberries"];
-const fruit = "strawberry";
-// Проверяем наличие элемента
-// const hasFruit = redFruits.includes(fruit);
-
-// if (hasFruit) {
-//   console.log(`${fruit} is a red fruit!`);
+// if (login === 'Админ') {
+//     const password = prompt('enter password');
+//     if (password === 'Я админ') {
+//         console.log('Здравствуйте!');
+//     }
+//     else {
+//         console.log('Неверный пароль');
+//     }
 // }
-// const numbers = [];
+// else {
+//     if (login === null || login === '') {
+//         console.log('Отменено');
+//     }
+//     else {
+//         console.log('Я вас не знаю');
+//     }
+// }
 
-// numbers.push(1);
-// console.log(numbers); // [1]
+// const login = prompt('enter login');
 
-// numbers.push(2);
-// console.log(numbers); // [1, 2]
+// if (login === 'Админ') {
+//   const password = prompt('enter password');
 
-// numbers.push(3);
-// console.log(numbers); // [1, 2, 3]
+//   if (password === 'Я админ') {
+//     console.log('Здравствуйте');
+//   } else {
+//     console.log('Неверный пароль');
+//   }
+// } else {
+//   if (login === null || login === '') {
+//     console.log('Отменено');
+//   } else {
+//     console.log('Я вас не знаю');
+//   }
+// }
 
-// numbers.push(4);
-// console.log(numbers); // [1, 2, 3, 4]
+// ===== regular expressions =====
+// https://devdocs.io/javascript/global_objects/regexp/exec
+// const reg = /[aeiou]+/gi;
+// const str = 'jdooohfg 097 sdfadseq 34 sduufs 345';
 
-// numbers.push(5);
-// console.log(numbers); // [1, 2, 3, 4, 5]
+// console.log(reg.exec(str));
 
-// console.log(numbers.pop()); //  5
-// console.log(numbers); // [1, 2, 3, 4]
+// ===== game ======
+// 1 --> 100
 
-// console.log(numbers.pop()); //  4
-// console.log(numbers); // [1, 2, 3]
+// let count = 0;
+// let userInput;
+// const x = ~~(Math.random() * 100) + 1;
+// // console.log(x);
 
-// console.log(numbers.pop()); //  3
-// console.log(numbers); // [1, 2]
+// do {
+//   count++;
+//   userInput = Number(prompt('enter your number'));
+//   console.log(userInput);
 
-// console.log(numbers.pop()); //  2
-// console.log(numbers); // [1]
+//   if (x > userInput) {
+//     console.log('x >', userInput);
+//   } else if (x < userInput) {
+//     console.log('x <', userInput);
+//   } else {
+//     console.log('Hurray!!!');
+//   }
+// } while (x !== userInput);
 
-// console.log(numbers.pop()); //  1
-// console.log(numbers); // []
-
-// const scores = [1, 2, 3, 4, 5];
-
-// // Удаляем три элемента массива, начиная с первого элемента (индекс 0)
-// const deletedScores = scores.splice(0, 3);
-
-// // Теперь массив scores содержит два элемента
-// console.log(scores); // [4, 5]
-
-// // А массив deletedScores содержит три удаленных элемента
-// console.log(deletedScores); // [1, 2, 3]
-
-const oldClients = ["Mango", "Ajax", "Poly", "Kiwi"];
-const newClients = ["Monkong", "Singu"];
-
-const allClientsWithOldFirst = oldClients.concat(newClients);
-console.log(allClientsWithOldFirst); // ["Mango", "Ajax", "Poly", "Kiwi", "Monkong", "Singu"]
-
-const allClientsWithNewFirst = newClients.concat(oldClients);
-console.log(allClientsWithNewFirst); // ["Monkong", "Singu", "Mango", "Ajax", "Poly", "Kiwi"]
-
-console.log(oldClients); // ["Mango", "Ajax", "Poly", "Kiwi"]
-console.log(newClients); // ["Monkong", "Singu"]
+// console.log('count:', count);
 
